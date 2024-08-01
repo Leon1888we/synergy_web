@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Простой слайдер изображений</title>
+
+    <style>
+        #slider-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #image {
+            position: absolute;
+            top: 100%;
+            left: 43%;
+            width: 270px;
+            height: 480px;
+        }
+        #prev, #next {
+            position: relative;
+            top: 550px;
+            border: 3px solid black; /* толщина, стиль и цвет рамки */
+            border-radius: 4px;/* радиус скругления углов */
+            padding: 10px 20px; /* поля внутри кнопок */
+            font-size: .9rem; /* размер шрифта */
+
+        }
+        #prev {
+            left: 45%;
+        }
+        #next {
+            right: 45%;
+        }
+        .text-center {  
+            text-align: center;
+            color: aqua;
+        }
+    </style>
+
+</head>
+
+<body style="background-color: #385270">
+    <h1 class="text-center">Простой слайдер на чистом JS</h1>
+    <div id="slider-container">
+        <button id="prev">Назад</button>
+        <img id="image" src="img/1.jpg" style="border: 3px solid black;"/>
+        <button id="next">Вперед</button>
+    </div>
+    <script>
+        // Массив с URL изображений
+        const imagesUrls = [
+            "img/1.jpg",
+            "img/2.jpg",
+            "img/3.jpg",
+            "img/4.jpg",
+            "img/5.jpg",
+        ];
+
+        // индекс для отслеживания текущей картинки
+        let currentIndex = 0;
+
+        // Устанавливаем начальное изображение
+        const imageElement = document.querySelector("#image");
+        imageElement.src = imagesUrls[currentIndex];
+
+        // Функция, отвечающая за переход к следующему изображению
+        function nextImageHandler() {
+            // Увеличиваем индекс текущего изображения
+            currentIndex++;
+
+            // Если текущий индекс больше длины массива изображений, устанавливаем его обратно в 0
+            if (currentIndex >= imagesUrls.length) {
+                currentIndex = 0;
+            }
+
+            // Показываем следующее изображение
+            imageElement.src = imagesUrls[currentIndex];
+        }
+
+        //  Функция, отвечающая за переход к предыдущему изображению
+        function previousImageHandler() {
+            // Уменьшаем индекс
+            currentIndex--;
+
+            // Если текущий индекс меньше 0, устанавливаем его на последний индекс массива изображений
+            if (currentIndex < 0) {
+                currentIndex = imagesUrls.length - 1;
+            }
+
+            // Показываем предыдущее изображение
+            imageElement.src = imagesUrls[currentIndex];
+        }
+
+        // Устанавливаем обработчики изображений на кнопки
+        const nextButton = document.querySelector("#next");
+        nextButton.addEventListener("click", nextImageHandler);
+
+        const previousButton = document.querySelector("#prev");
+        previousButton.addEventListener("click", previousImageHandler);
+    </script>
+
+</body>
+
+</html>
