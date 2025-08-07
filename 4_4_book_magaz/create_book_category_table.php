@@ -1,0 +1,1 @@
+php Schema::create('book_category', function (Blueprint $table) { $table->foreignId('book_id')->constrained(); $table->foreignId('category_id')->constrained(); $table->primary(['book_id', 'category_id']); });

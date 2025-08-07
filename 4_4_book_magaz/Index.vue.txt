@@ -1,0 +1,63 @@
+vue
+      <div class="space-y-4">
+        <div>
+          <label class="block mb-2">Категории</label>
+          <select v-model="filters.category" class="w-full border rounded p-2">
+            <option value="">Все категории</option>
+            <option v-for="category in categories" :value="category.name">
+              {{ category.name }}
+            </option>
+          </select>
+        </div>
+        
+        <div>
+          <label class="block mb-2">Авторы</label>
+          <select v-model="filters.author" class="w-full border rounded p-2">
+            <option value="">Все авторы</option>
+            <option v-for="author in authors" :value="author.name">
+              {{ author.name }}
+            </option>
+          </select>
+        </div>
+        
+        <div>
+          <label class="block mb-2">Год издания</label>
+          <select v-model="filters.year" class="w-full border rounded p-2">
+            <option value="">Любой год</option>
+            <option v-for="year in years" :value="year">
+              {{ year }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Список книг -->
+  <div class="md:w-3/4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div v-for="book in books.data" class="bg-white rounded-lg shadow overflow-hidden hover:shadow-lg transition-shadow">
+        <img :src="book.cover_image" :alt="book.title" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <h3 class="text-lg font-bold">{{ book.title }}</h3>
+          <p class="text-gray-600">{{ book.author.name }}</p>
+          <div class="mt-2 flex justify-between items-center">
+            <span class="text-lg font-bold">${{ book.price }}</span>
+            <Link :href="route('books.show', book.id)" class="text-blue-600 hover:text-blue-800">
+              Подробнее
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="mt-6">
+      <Pagination :links="books.links" />
+    </div>
+  </div>
+</div>
+  
+
+</div
+
+    </template>

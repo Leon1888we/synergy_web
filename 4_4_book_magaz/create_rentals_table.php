@@ -1,0 +1,1 @@
+php Schema::create('rentals', function (Blueprint $table) { $table->id(); $table->foreignId('user_id')->constrained(); $table->foreignId('book_id')->constrained(); $table->date('start_date'); $table->date('end_date'); $table->decimal('price', 8, 2); $table->string('status')->default('active'); $table->timestamps(); });
