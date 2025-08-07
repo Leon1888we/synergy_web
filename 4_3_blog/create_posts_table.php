@@ -1,0 +1,1 @@
+php Schema::create('posts', function (Blueprint $table) { $table->id(); $table->foreignId('user_id')->constrained()->onDelete('cascade'); $table->string('title'); $table->text('content'); $table->boolean('is_public')->default(true); $table->boolean('is_request_only')->default(false); $table->timestamps(); });

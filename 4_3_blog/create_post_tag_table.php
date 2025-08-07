@@ -1,0 +1,1 @@
+php Schema::create('post_tag', function (Blueprint $table) { $table->foreignId('post_id')->constrained()->onDelete('cascade'); $table->foreignId('tag_id')->constrained()->onDelete('cascade'); $table->primary(['post_id', 'tag_id']); });
