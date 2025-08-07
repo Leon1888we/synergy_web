@@ -1,0 +1,3 @@
+php Schema::create('travel_entries', function (Blueprint $table) { $table->id(); $table->foreignId('user_id')->constrained()->cascadeOnDelete(); $table->string('title'); $table->text('description'); $table->string('location'); $table->date('start_date'); $table->date('end_date'); $table->decimal('cost', 10, 2); $table->json('heritage_sites')->nullable(); $table->json('places_to_visit')->nullable(); $table->timestamps(); });
+
+Schema::create('entry_photos', function (Blueprint $table) { $table->id(); $table->foreignId('entry_id')->constrained('travel_entries')->cascadeOnDelete(); $table->string('path'); $table->timestamps(); }); 

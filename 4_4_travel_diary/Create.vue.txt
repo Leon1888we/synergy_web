@@ -1,0 +1,7 @@
+vue 
+Title 
+<div class="mb-4">
+  <label class="block text-gray-700">Description</label>
+  <textarea v-model="form.description" class="form-textarea mt-1 block w-full"></textarea>
+</div>
+</form> </template>
